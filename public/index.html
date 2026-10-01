@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080810">
+<meta name="robots" content="noindex">
+<title>De-Risking Startups — Free Kindle Copy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080810;
+    --surface: #0e0e1a;
+    --surface2: #13131f;
+    --purple: #7c3aed;
+    --purple-light: #9b5cf6;
+    --violet: #a855f7;
+    --violet-light: #c084fc;
+    --accent: #e040fb;
+    --text: #f0eeff;
+    --text-muted: #8b87a8;
+    --text-dim: #4a4768;
+    --border: rgba(124, 58, 237, 0.2);
+    --glow: rgba(124, 58, 237, 0.15);
+    --green: #22c55e;
+    --red: #ef4444;
+    --amber: #f59e0b;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100dvh;
+  }
+
+  .ambient { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+  .orb { position:absolute; border-radius:50%; filter:blur(90px); opacity:0.3; }
+  .orb-1 {
+    width:500px; height:500px;
+    background:radial-gradient(circle,var(--purple) 0%,transparent 70%);
+    top:-15%; left:50%; transform:translateX(-50%);
+    animation: pulse 7s ease-in-out infinite;
+  }
+  .orb-2 {
+    width:350px; height:350px;
+    background:radial-gradient(circle,var(--accent) 0%,transparent 70%);
+    bottom:-5%; right:-10%; opacity:0.18;
+    animation: pulse 9s ease-in-out infinite reverse;
+  }
+  @keyframes pulse {
+    0%,100% { transform:translateX(-50%) scale(1); }
+    50% { transform:translateX(-50%) scale(1.12); }
+  }
+  .grid-overlay {
+    position:fixed; inset:0; pointer-events:none; z-index:0;
+    background-image:
+      linear-gradient(rgba(124,58,237,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,58,237,0.04) 1px, transparent 1px);
+    background-size:60px 60px;
+    -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 100%);
+    mask-image:radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 100%);
+  }
+
+  .app {
+    position:relative; z-index:1;
+    min-height:100dvh;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    padding:24px 20px;
+    padding-top:max(24px, env(safe-area-inset-top));
+    padding-bottom:max(24px, env(safe-area-inset-bottom));
+  }
+
+  .screen { display:none; width:100%; max-width:440px; animation: fadeUp 0.5s ease both; }
+  .screen.active { display:flex; flex-direction:column; }
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(20px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+
+  .logo { display:flex; align-items:center; justify-content:center; margin-bottom:28px; align-self:center; }
+  .logo .logo-svg { height:28px; width:auto; display:block; }
+
+  .card {
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:36px 28px;
+    position:relative; overflow:hidden;
+  }
+  .card::before {
+    content:''; position:absolute;
+    top:-1px; left:0; right:0; height:2px;
+    background:linear-gradient(90deg,transparent 10%,var(--purple),var(--accent),var(--purple),transparent 90%);
+  }
+  .card.center { text-align:center; }
+
+  .eyebrow {
+    display:inline-flex; align-items:center; gap:8px;
+    padding:5px 14px; border:1px solid var(--border);
+    border-radius:100px; background:rgba(124,58,237,0.08);
+    font-size:12px; font-weight:600;
+    letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--violet-light); margin-bottom:20px;
+  }
+  .eyebrow-dot { width:6px; height:6px; border-radius:50%; background:var(--violet-light); animation:blink 2s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .title {
+    font-family:'Geist',sans-serif;
+    font-size:34px; font-weight:800;
+    line-height:1.08; letter-spacing:-0.03em;
+    margin-bottom:10px;
+  }
+  .tagline { color:var(--text); font-size:16px; font-weight:400; line-height:1.4; margin-bottom:8px; opacity:0.85; }
+  .author { color:var(--violet-light); font-size:15px; font-weight:500; margin-bottom:14px; }
+  .sub { color:var(--text-muted); font-size:17px; font-weight:300; line-height:1.55; margin-bottom:28px; }
+
+  .field { margin-bottom:14px; }
+  .field label {
+    display:block; font-size:12px; font-weight:600;
+    letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--text-muted); margin-bottom:8px;
+  }
+  .field input {
+    width:100%; padding:16px;
+    background:var(--bg); border:1px solid var(--border);
+    border-radius:12px; color:var(--text);
+    font-family:'DM Sans',sans-serif; font-size:17px; /* ≥16px avoids iOS zoom */
+    outline:none; transition:border-color 0.2s;
+  }
+  .field input::placeholder { color:var(--text-dim); }
+  .field input:focus { border-color:var(--purple-light); }
+  .field input.has-error { border-color:var(--red); }
+
+  .hp { position:absolute !important; left:-9999px; width:1px; height:1px; opacity:0; }
+
+  .error-msg { color:#f87171; font-size:14px; min-height:20px; margin:-4px 0 6px; }
+
+  .btn-main {
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    width:100%; padding:18px;
+    background:linear-gradient(135deg,var(--purple),var(--violet));
+    border:none; border-radius:12px;
+    color:white; font-family:'DM Sans',sans-serif;
+    font-size:18px; font-weight:600; text-decoration:none;
+    cursor:pointer; transition:all 0.2s;
+    position:relative; overflow:hidden;
+  }
+  @media (hover:hover) and (pointer:fine) {
+    .btn-main:hover { opacity:0.92; transform:translateY(-1px); box-shadow:0 12px 32px rgba(124,58,237,0.3); }
+  }
+  .btn-main:active { transform:translateY(0); }
+  .btn-main:disabled { opacity:0.55; cursor:not-allowed; transform:none; box-shadow:none; }
+
+  .spinner {
+    width:18px; height:18px; border-radius:50%;
+    border:2px solid rgba(255,255,255,0.35); border-top-color:#fff;
+    animation:spin 0.7s linear infinite; display:none;
+  }
+  .btn-main.loading .spinner { display:block; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+
+  .fine { color:var(--text-dim); font-size:13px; margin-top:16px; text-align:center; }
+
+  .result-emoji { font-size:56px; line-height:1; margin-bottom:18px; animation:bounceIn 0.6s ease both; }
+  @keyframes bounceIn { 0%{transform:scale(0)} 50%{transform:scale(1.2)} 100%{transform:scale(1)} }
+  .result-title { font-family:'Geist',sans-serif; font-size:30px; font-weight:800; letter-spacing:-0.02em; line-height:1.15; margin-bottom:10px; }
+  .result-sub { color:var(--text-muted); font-size:17px; font-weight:300; margin-bottom:28px; }
+  .result-sub strong { color:var(--text); font-weight:500; }
+
+  .redirect-note { color:var(--text-muted); font-size:14px; margin-top:16px; min-height:22px; }
+  .redirect-note button {
+    background:none; border:none; color:var(--violet-light);
+    font:inherit; text-decoration:underline; cursor:pointer; padding:0;
+  }
+
+  @media (max-width:480px) {
+    .app { padding-left:16px; padding-right:16px; }
+    .card { padding:30px 22px; }
+    .title { font-size:32px; }
+  }
+  @media (max-height:640px) {
+    .logo { margin-bottom:18px; }
+    .card { padding-top:26px; padding-bottom:26px; }
+    .eyebrow { margin-bottom:14px; }
+    .sub { margin-bottom:20px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ambient"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+<div class="grid-overlay"></div>
+
+<main class="app">
+  <div class="logo" aria-label="Rocketbeet"><svg class="logo-svg" viewBox="0 0 425 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M94.2797 67.4014V24.0114H110.551C113.884 24.0114 116.681 24.5905 118.941 25.7487C121.215 26.9069 122.931 28.5312 124.089 30.6216C125.261 32.6979 125.848 35.1202 125.848 37.8886C125.848 40.6711 125.254 43.0863 124.068 45.1344C122.896 47.1683 121.165 48.7431 118.877 49.859C116.589 50.9607 113.778 51.5115 110.445 51.5115H98.856V44.9861H109.386C111.335 44.9861 112.931 44.7177 114.174 44.181C115.417 43.6301 116.335 42.8321 116.928 41.7869C117.535 40.7276 117.839 39.4281 117.839 37.8886C117.839 36.349 117.535 35.0355 116.928 33.9479C116.321 32.8462 115.396 32.0129 114.153 31.4479C112.91 30.8688 111.307 30.5793 109.343 30.5793H102.14V67.4014H94.2797ZM116.695 47.7403L127.437 67.4014H118.665L108.114 47.7403H116.695ZM144.086 68.037C140.908 68.037 138.154 67.3378 135.823 65.9395C133.493 64.5412 131.685 62.585 130.4 60.0708C129.128 57.5567 128.493 54.6189 128.493 51.2573C128.493 47.8957 129.128 44.9508 130.4 42.4225C131.685 39.8942 133.493 37.931 135.823 36.5327C138.154 35.1343 140.908 34.4352 144.086 34.4352C147.264 34.4352 150.018 35.1343 152.349 36.5327C154.679 37.931 156.48 39.8942 157.751 42.4225C159.037 44.9508 159.679 47.8957 159.679 51.2573C159.679 54.6189 159.037 57.5567 157.751 60.0708C156.48 62.585 154.679 64.5412 152.349 65.9395C150.018 67.3378 147.264 68.037 144.086 68.037ZM144.129 61.8929C145.852 61.8929 147.292 61.4197 148.451 60.4734C149.609 59.5129 150.47 58.2276 151.035 56.6174C151.614 55.0073 151.904 53.2135 151.904 51.2361C151.904 49.2445 151.614 47.4437 151.035 45.8335C150.47 44.2092 149.609 42.9169 148.451 41.9564C147.292 40.9959 145.852 40.5157 144.129 40.5157C142.363 40.5157 140.894 40.9959 139.722 41.9564C138.564 42.9169 137.695 44.2092 137.116 45.8335C136.551 47.4437 136.268 49.2445 136.268 51.2361C136.268 53.2135 136.551 55.0073 137.116 56.6174C137.695 58.2276 138.564 59.5129 139.722 60.4734C140.894 61.4197 142.363 61.8929 144.129 61.8929ZM177.997 68.037C174.749 68.037 171.959 67.3237 169.629 65.8971C167.312 64.4706 165.526 62.5002 164.269 59.9861C163.026 57.4578 162.404 54.5482 162.404 51.2573C162.404 47.9522 163.04 45.0355 164.311 42.5072C165.582 39.9649 167.376 37.9875 169.692 36.575C172.023 35.1485 174.777 34.4352 177.955 34.4352C180.596 34.4352 182.934 34.9225 184.968 35.8971C187.016 36.8575 188.647 38.2205 189.862 39.9861C191.077 41.7375 191.769 43.7855 191.938 46.1301H184.608C184.311 44.5623 183.605 43.2558 182.489 42.2106C181.387 41.1513 179.911 40.6216 178.061 40.6216C176.493 40.6216 175.116 41.0454 173.93 41.8928C172.743 42.7262 171.818 43.9267 171.154 45.4945C170.504 47.0623 170.18 48.9409 170.18 51.1301C170.18 53.3477 170.504 55.2544 171.154 56.8505C171.804 58.4324 172.715 59.6542 173.887 60.5158C175.074 61.3632 176.465 61.7869 178.061 61.7869C179.191 61.7869 180.201 61.5751 181.091 61.1514C181.995 60.7135 182.75 60.085 183.358 59.2658C183.965 58.4465 184.382 57.4508 184.608 56.2785H191.938C191.755 58.5807 191.077 60.6217 189.904 62.4014C188.732 64.1669 187.136 65.5511 185.116 66.5539C183.096 67.5426 180.723 68.037 177.997 68.037ZM202.841 57.1895L202.82 47.931H204.049L215.743 34.8589H224.705L210.32 50.8759H208.731L202.841 57.1895ZM195.849 67.4014V24.0114H203.519V67.4014H195.849ZM216.273 67.4014L205.68 52.592L210.849 47.1895L225.447 67.4014H216.273ZM240.497 68.037C237.234 68.037 234.416 67.359 232.044 66.0031C229.685 64.633 227.87 62.698 226.599 60.198C225.327 57.6838 224.692 54.7248 224.692 51.3208C224.692 47.9734 225.327 45.0355 226.599 42.5072C227.884 39.9649 229.678 37.9875 231.98 36.575C234.282 35.1485 236.987 34.4352 240.094 34.4352C242.1 34.4352 243.993 34.7601 245.772 35.4098C247.566 36.0454 249.148 37.0341 250.518 38.3759C251.902 39.7177 252.99 41.4267 253.781 43.503C254.572 45.5652 254.967 48.0228 254.967 50.8759V53.2276H228.294V48.0581H247.616C247.601 46.5892 247.284 45.2827 246.662 44.1386C246.041 42.9804 245.172 42.0694 244.056 41.4055C242.955 40.7417 241.669 40.4098 240.2 40.4098C238.633 40.4098 237.255 40.7911 236.069 41.5539C234.883 42.3024 233.957 43.2911 233.294 44.52C232.644 45.7347 232.312 47.0694 232.298 48.5242V53.0369C232.298 54.9296 232.644 56.5539 233.336 57.9098C234.028 59.2516 234.996 60.2827 236.238 61.003C237.481 61.7093 238.936 62.0624 240.603 62.0624C241.719 62.0624 242.729 61.907 243.633 61.5963C244.536 61.2714 245.32 60.7982 245.984 60.1768C246.648 59.5553 247.149 58.7855 247.488 57.8674L254.649 58.6725C254.198 60.5652 253.336 62.2177 252.065 63.6302C250.808 65.0285 249.198 66.1161 247.234 66.8929C245.271 67.6556 243.025 68.037 240.497 68.037ZM275.319 34.8589V40.7911H256.612V34.8589H275.319ZM261.23 27.0623H268.9V57.6132C268.9 58.6443 269.055 59.4352 269.366 59.9861C269.691 60.5228 270.114 60.8901 270.637 61.0878C271.16 61.2855 271.739 61.3844 272.374 61.3844C272.855 61.3844 273.292 61.3491 273.688 61.2785C274.097 61.2079 274.408 61.1443 274.62 61.0878L275.912 67.0836C275.503 67.2248 274.917 67.3802 274.154 67.5497C273.405 67.7192 272.487 67.818 271.4 67.8463C269.479 67.9028 267.749 67.6132 266.209 66.9776C264.67 66.3279 263.448 65.3251 262.544 63.9692C261.654 62.6132 261.216 60.9183 261.23 58.8844V27.0623ZM280.385 67.4014V24.0114H288.055V40.2403H288.372C288.768 39.4493 289.326 38.6089 290.046 37.7191C290.767 36.8151 291.741 36.0454 292.97 35.4098C294.199 34.7601 295.767 34.4352 297.673 34.4352C300.187 34.4352 302.454 35.0779 304.474 36.3632C306.508 37.6344 308.118 39.52 309.305 42.02C310.505 44.5058 311.106 47.5567 311.106 51.1725C311.106 54.746 310.519 57.7827 309.347 60.2827C308.175 62.7827 306.579 64.6895 304.559 66.0031C302.539 67.3166 300.251 67.9734 297.695 67.9734C295.83 67.9734 294.283 67.6627 293.055 67.0412C291.826 66.4197 290.837 65.6711 290.089 64.7954C289.354 63.9056 288.782 63.0652 288.372 62.2742H287.928V67.4014H280.385ZM287.906 51.1301C287.906 53.2347 288.203 55.0779 288.796 56.6598C289.404 58.2417 290.272 59.4776 291.402 60.3675C292.546 61.2432 293.93 61.681 295.555 61.681C297.25 61.681 298.669 61.229 299.813 60.3251C300.957 59.407 301.819 58.157 302.398 56.5751C302.991 54.979 303.288 53.164 303.288 51.1301C303.288 49.1104 302.998 47.3166 302.419 45.7488C301.84 44.181 300.978 42.9522 299.834 42.0623C298.69 41.1725 297.264 40.7276 295.555 40.7276C293.916 40.7276 292.525 41.1584 291.381 42.02C290.237 42.8815 289.368 44.0892 288.775 45.6428C288.196 47.1965 287.906 49.0256 287.906 51.1301ZM329.646 68.037C326.383 68.037 323.566 67.359 321.193 66.0031C318.834 64.633 317.019 62.698 315.748 60.198C314.477 57.6838 313.841 54.7248 313.841 51.3208C313.841 47.9734 314.477 45.0355 315.748 42.5072C317.033 39.9649 318.827 37.9875 321.129 36.575C323.431 35.1485 326.136 34.4352 329.244 34.4352C331.249 34.4352 333.142 34.7601 334.922 35.4098C336.715 36.0454 338.297 37.0341 339.667 38.3759C341.051 39.7177 342.139 41.4267 342.93 43.503C343.721 45.5652 344.116 48.0228 344.116 50.8759V53.2276H317.443V48.0581H336.765C336.751 46.5892 336.433 45.2827 335.811 44.1386C335.19 42.9804 334.321 42.0694 333.205 41.4055C332.104 40.7417 330.818 40.4098 329.349 40.4098C327.782 40.4098 326.405 40.7911 325.218 41.5539C324.032 42.3024 323.107 43.2911 322.443 44.52C321.793 45.7347 321.461 47.0694 321.447 48.5242V53.0369C321.447 54.9296 321.793 56.5539 322.485 57.9098C323.177 59.2516 324.145 60.2827 325.388 61.003C326.631 61.7093 328.085 62.0624 329.752 62.0624C330.868 62.0624 331.878 61.907 332.782 61.5963C333.686 61.2714 334.47 60.7982 335.133 60.1768C335.797 59.5553 336.299 58.7855 336.638 57.8674L343.799 58.6725C343.347 60.5652 342.485 62.2177 341.214 63.6302C339.957 65.0285 338.347 66.1161 336.383 66.8929C334.42 67.6556 332.174 68.037 329.646 68.037ZM362.625 68.037C359.362 68.037 356.545 67.359 354.172 66.0031C351.813 64.633 349.998 62.698 348.727 60.198C347.456 57.6838 346.82 54.7248 346.82 51.3208C346.82 47.9734 347.456 45.0355 348.727 42.5072C350.012 39.9649 351.806 37.9875 354.108 36.575C356.41 35.1485 359.115 34.4352 362.223 34.4352C364.228 34.4352 366.121 34.7601 367.901 35.4098C369.694 36.0454 371.276 37.0341 372.646 38.3759C374.031 39.7177 375.118 41.4267 375.909 43.503C376.7 45.5652 377.096 48.0228 377.096 50.8759V53.2276H350.422V48.0581H369.744C369.73 46.5892 369.412 45.2827 368.79 44.1386C368.169 42.9804 367.3 42.0694 366.184 41.4055C365.083 40.7417 363.797 40.4098 362.329 40.4098C360.761 40.4098 359.384 40.7911 358.197 41.5539C357.011 42.3024 356.086 43.2911 355.422 44.52C354.772 45.7347 354.44 47.0694 354.426 48.5242V53.0369C354.426 54.9296 354.772 56.5539 355.464 57.9098C356.156 59.2516 357.124 60.2827 358.367 61.003C359.61 61.7093 361.064 62.0624 362.731 62.0624C363.847 62.0624 364.857 61.907 365.761 61.5963C366.665 61.2714 367.449 60.7982 368.112 60.1768C368.776 59.5553 369.278 58.7855 369.617 57.8674L376.778 58.6725C376.326 60.5652 375.464 62.2177 374.193 63.6302C372.936 65.0285 371.326 66.1161 369.362 66.8929C367.399 67.6556 365.153 68.037 362.625 68.037ZM397.447 34.8589V40.7911H378.74V34.8589H397.447ZM383.358 27.0623H391.028V57.6132C391.028 58.6443 391.183 59.4352 391.494 59.9861C391.819 60.5228 392.243 60.8901 392.765 61.0878C393.288 61.2855 393.867 61.3844 394.503 61.3844C394.983 61.3844 395.421 61.3491 395.816 61.2785C396.226 61.2079 396.536 61.1443 396.748 61.0878L398.041 67.0836C397.631 67.2248 397.045 67.3802 396.282 67.5497C395.534 67.7192 394.616 67.818 393.528 67.8463C391.607 67.9028 389.877 67.6132 388.337 66.9776C386.798 66.3279 385.576 65.3251 384.672 63.9692C383.782 62.6132 383.344 60.9183 383.358 58.8844V27.0623Z" fill="white"/><g clip-path="url(#clip0_2050_205)"><path d="M65.2649 39.5163C65.2348 33.5968 62.9641 31.2993 56.9792 31.1341C50.8709 30.9659 49.7552 29.9147 49.0965 23.7069C48.3176 16.3698 47.1807 15.3006 39.6198 14.775C34.48 14.4206 32.9402 12.6607 32.9823 7.19768C33.0184 2.26924 34.9101 0.223988 39.6198 0.0227656C45.1025 -0.211493 47.1416 1.32921 47.7552 6.17655C48.91 15.2706 48.907 15.3006 58.0348 16.1475C61.9717 16.5109 63.728 18.5652 63.9596 22.5056C64.4378 30.6565 65.5325 31.6687 73.5115 32.3895C78.937 32.879 80.3626 34.4167 80.3656 39.7806C80.3716 45.1896 78.94 46.7663 73.6047 47.2318C65.5175 47.9406 64.4017 48.9347 63.9837 57.0166C63.7521 61.4915 61.6799 63.4407 57.2649 63.5879C49.6138 63.8431 48.2725 65.2697 47.8574 72.8531C47.5657 78.1569 45.6529 79.7937 39.9146 79.6466C34.7687 79.5144 33.0665 77.7124 32.9913 72.3335C32.9191 66.9546 34.5191 65.1826 39.7161 64.8973C47.2679 64.4798 48.6334 63.1283 49.1958 55.4909C49.5897 50.127 51.0394 48.7515 56.513 48.5503C63.0694 48.31 65.2949 46.0125 65.2619 39.5163H65.2649Z" fill="white"/><path d="M24.0438 15.8195C30.3656 15.7985 32.0377 17.4383 32.2843 23.9045C32.5219 30.1273 33.9806 31.5569 40.2392 31.7221C46.5038 31.8873 48.2091 33.5391 48.2271 39.4706C48.2482 45.9638 46.6091 47.7327 40.3866 47.9369C33.7069 48.1562 32.4768 49.2975 32.3475 56.0519C32.2783 59.6559 31.34 62.8994 27.5415 63.5392C24.0167 64.1338 19.2047 65.4102 17.5205 61.0614C16.3265 57.98 16.928 53.8715 17.8002 50.5018C18.107 49.3185 21.5746 48.4685 23.6588 48.3184C30.0498 47.8619 32.5249 45.7085 32.5761 39.846C32.6272 33.9685 30.158 31.6079 23.7821 31.4338C18.0257 31.2776 16.0047 29.1092 16.131 23.2137C16.2483 17.6606 18.1972 15.8406 24.0408 15.8225L24.0438 15.8195Z" fill="white"/><path d="M0.000780734 39.9921C-0.0353094 32.8262 1.15867 31.5678 8.00075 31.5528C14.8519 31.5408 16.0067 32.6641 16.0368 39.3825C16.0699 46.7736 14.927 48.068 8.34361 48.1101C1.2519 48.1551 0.0368708 46.9748 0.000780734 39.9921Z" fill="white"/></g><defs><clipPath id="clip0_2050_205"><rect width="80.3666" height="79.6538" fill="white"/></clipPath></defs></svg></div>
+
+  <!-- 1. FORM -->
+  <section class="screen active" id="screen-form">
+    <div class="card">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Free Kindle Copy</div>
+      <h1 class="title">De-Risking Startups</h1>
+      <p class="tagline">A Founder’s Framework for Turning Risk into Competitive Advantage</p>
+      <p class="author">by Juan Damia</p>
+      <p class="sub">Claim your complimentary Kindle copy. Enter your email and we’ll send it right over.</p>
+
+      <form id="claim-form" novalidate>
+        <div class="field">
+          <label for="input-email">Email</label>
+          <input type="email" id="input-email" name="email" placeholder="Enter your email"
+                 autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" required>
+        </div>
+        <!-- honeypot for bots -->
+        <input class="hp" type="text" name="website" id="input-website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="error-msg" id="error-msg" role="alert"></p>
+        <button type="submit" class="btn-main" id="btn-claim">
+          <span class="spinner" aria-hidden="true"></span>
+          <span id="btn-label">Get the Book</span>
+        </button>
+      </form>
+      <p class="fine">One copy per person, while supplies last.</p>
+    </div>
+  </section>
+
+  <!-- 2. SUCCESS -->
+  <section class="screen" id="screen-success">
+    <div class="card center">
+      <div class="result-emoji">📚</div>
+      <h2 class="result-title">Your book is ready!</h2>
+      <p class="result-sub" id="success-sub">We’ve also sent the link to your email.</p>
+      <a class="btn-main" id="btn-open" href="#" rel="noopener noreferrer">Open Kindle Book</a>
+      <p class="redirect-note" id="redirect-note"></p>
+    </div>
+  </section>
+
+  <!-- 3. SOLD OUT -->
+  <section class="screen" id="screen-soldout">
+    <div class="card center">
+      <div class="result-emoji">🚀</div>
+      <h2 class="result-title">All complimentary copies have been claimed.</h2>
+      <p class="result-sub">Thanks for your interest in <strong>De-Risking Startups</strong>.</p>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('claim-form'), input = $('input-email'), btn = $('btn-claim'),
+      label = $('btn-label'), err = $('error-msg');
+  var REDIRECT_SECONDS = 4;
+  var redirectTimer = null;
+
+  function show(id) {
+    document.querySelectorAll('.screen').forEach(function (s) { s.classList.remove('active'); });
+    $(id).classList.add('active');
+  }
+
+  function setLoading(on) {
+    btn.disabled = on;
+    btn.classList.toggle('loading', on);
+    label.textContent = on ? 'Getting your book…' : 'Get the Book';
+  }
+
+  function showError(msg) {
+    err.textContent = msg || '';
+    input.classList.toggle('has-error', !!msg);
+  }
+
+  function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+
+  function showSuccess(data) {
+    var url = data.url;
+    $('btn-open').href = url;
+    var sub = $('success-sub');
+    if (data.emailSent) {
+      sub.textContent = data.status === 'existing'
+        ? 'This email already claimed a copy — here it is again. We’ve also sent the link to your email.'
+        : 'We’ve also sent the link to your email.';
+    } else {
+      sub.textContent = 'Tap the button below to open it. (We couldn’t email the link right now — the button works either way.)';
+    }
+    show('screen-success');
+
+    // Optional auto-open; the button stays in case it is blocked.
+    var left = REDIRECT_SECONDS, note = $('redirect-note');
+    function render() {
+      note.innerHTML = 'Opening Amazon in ' + left + 's… <button type="button" id="cancel-redirect">Stay here</button>';
+      $('cancel-redirect').onclick = function () { clearInterval(redirectTimer); note.textContent = ''; };
+    }
+    render();
+    redirectTimer = setInterval(function () {
+      left--;
+      if (left <= 0) { clearInterval(redirectTimer); note.textContent = ''; window.location.href = url; }
+      else render();
+    }, 1000);
+  }
+
+  input.addEventListener('input', function () { if (err.textContent) showError(''); });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (btn.disabled) return;
+    var email = input.value.trim();
+    if (!isEmail(email)) { showError('Please enter a valid email address.'); input.focus(); return; }
+
+    showError('');
+    setLoading(true);
+    input.blur();
+
+    fetch('/api/claim', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, website: $('input-website').value })
+    })
+      .then(function (r) { return r.json().catch(function () { return { status: 'error' }; }); })
+      .then(function (data) {
+        if ((data.status === 'new' || data.status === 'existing') && data.url) return showSuccess(data);
+        if (data.status === 'sold_out') return show('screen-soldout');
+        setLoading(false);
+        showError(data.message || 'Something went wrong. Please try again.');
+      })
+      .catch(function () {
+        setLoading(false);
+        showError('Connection problem. Please check your signal and try again.');
+      });
+  });
+
+  // If everything is gone, show sold-out without asking for an email.
+  fetch('/api/status', { cache: 'no-store' })
+    .then(function (r) { return r.json(); })
+    .then(function (d) { if (d && d.available === false) show('screen-soldout'); })
+    .catch(function () {});
+})();
+</script>
+</body>
+</html>

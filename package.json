@@ -1,0 +1,10 @@
+{
+  "name": "book-giveaway",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "dev": "vercel dev",
+    "import": "node scripts/import-links.mjs"
+  }
+}
